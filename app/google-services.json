@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "887818471062",
+    "project_id": "businesscards-b1232",
+    "storage_bucket": "businesscards-b1232.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887818471062:android:f869b7acdecc2b45ea24b7",
+        "android_client_info": {
+          "package_name": "com.example.businesscards"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887818471062-iv2fp0ii3rs8usp9dr9o3s6u8fg0gf9e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.businesscards",
+            "certificate_hash": "c4de02a750a4687fba4af592bd369da228ad08c6"
+          }
+        },
+        {
+          "client_id": "887818471062-roaklm54c611hlv3j3ppn3ovcifqria2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw1n4NJVdEMmHUjVnZlL64PhaM6CtcTEU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887818471062-roaklm54c611hlv3j3ppn3ovcifqria2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "887818471062-ci3tq5g4rqj2r0rcch8k8jo2mkpsle7e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.goncharik.georgei.Business-Cards"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
