@@ -1,8 +1,16 @@
 package com.example.businesscards.mainscreen
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import com.example.businesscards.R
 import com.example.businesscards.authentication.AuthActivity
 import com.example.businesscards.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -18,29 +26,34 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val recyclerView: RecyclerView = binding.recyclerView
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = MyRecyclerViewAdapter(30)
+//        recyclerView.addItemDecoration(ItemDecoration().getItemOffsets())
+
 
 
         firebaseAuth = FirebaseAuth.getInstance()
-//        checkUser()
-
         binding.email.text = firebaseAuth.currentUser?.email
+    }
 
-        binding.logoutButton.setOnClickListener {
-            firebaseAuth.signOut()
-            startActivity(Intent(this@MainActivity, AuthActivity::class.java))
-            finish()
-        }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.appbar, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
 
-//    private fun checkUser() {
-//        val firebaseUser = firebaseAuth.currentUser
-//        if (firebaseUser == null) {
-//            startActivity(Intent(this, LoginActivity::class.java))
-//            finish()
-//        } else {
-//            val email = firebaseUser.email
-//            binding.email.text = email
-//        }
-//    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.signOut -> {
+                firebaseAuth.signOut()
+                startActivity(Intent(this@MainActivity, AuthActivity::class.java))
+                finish()
+                return true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
+    }
 }

@@ -2,19 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/rv_item_bg"
+    android:layout_margin="5dp">
 
     <TextView
+        android:id="@+id/large_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:text="Business Card"/>
+        android:text="Business Card"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"/>
 
     <TextView
+        android:id="@+id/small_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="Additional information"/>
+        android:text="Additional information"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"/>
 
 
 </LinearLayout>
