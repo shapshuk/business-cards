@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.businesscards.ui.splashscreen.SplashScreenFragment"
+        android:label="SplashScreenFragment" >
+        <action
+            android:id="@+id/action_splashScreenFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_cardsMainFragment"
+            app:destination="@id/cardsMainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.businesscards.ui.signin.SignInFragment"
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_cardsMainFragment"
+            app:destination="@id/cardsMainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardsMainFragment"
+        android:name="com.example.businesscards.ui.cardsmainfragment.CardsMainFragment"
+        android:label="CardsMainFragment" />
+</navigation>

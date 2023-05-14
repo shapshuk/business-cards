@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">BusinessCards</string>
+    <string name="app_name">Business Cards</string>
     <string name="web_client_id">887818471062-roaklm54c611hlv3j3ppn3ovcifqria2.apps.googleusercontent.com</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="you_have_no_internet_connection">You have no internet connection. Wait for recovery</string>
+    <string name="you_have_error_with_server">Server error occurred. Try again later</string>
+    <string name="your_waiting_time_is_up">Your waiting time is up. Try later</string>
+    <string name="can_not_upload_data_to_firebase">Can not upload data to firebase</string>
+    <string name="nothing_found">Nothing found</string>
 </resources>
