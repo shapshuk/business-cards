@@ -28,14 +28,14 @@ class BusinessCardsModule {
 
     @Provides
     @Singleton
-    fun provideUsersDatabaseReference(): DatabaseReference =
-        Firebase.database.getReference(USERS_KEY)
-
-    @Provides
-    @Singleton
-    @CardsReference
-    fun provideArticlesDatabaseReference(): DatabaseReference =
+    fun provideCardsDatabaseReference(): DatabaseReference =
         Firebase.database.getReference(CARDS_KEY)
+
+//    @Provides
+//    @Singleton
+//    @CardsReference
+//    fun provideArticlesDatabaseReference(): DatabaseReference =
+//        Firebase.database.getReference(USERS_KEY)
 
     companion object {
         private const val USERS_KEY = "Users"

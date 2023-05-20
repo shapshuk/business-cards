@@ -9,8 +9,13 @@ import com.example.businesscards.core.CARDS
 import com.example.businesscards.data.CardUiModel
 import com.example.businesscards.util.getUid
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -52,8 +57,9 @@ class SplashScreenViewModel @Inject constructor(
     private suspend fun readFirebaseData() {
         withContext(viewModelScope.coroutineContext) {
             getUid(firebaseAuth).let {
-                databaseReference.child(it).child(CARDS).get()
+                Firebase.database.getReference("Cards").get()
                     .addOnCompleteListener { task ->
+                        Log.d("RealtimeDatabase", task.toString())
                         if (task.isSuccessful) {
                             listOfDataFromFirebase.postValue(task.result.children.mapNotNull { data ->
                                 data.getValue<CardUiModel>()

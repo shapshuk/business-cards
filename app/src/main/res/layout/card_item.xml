@@ -4,25 +4,29 @@
     android:layout_height="200dp"
     android:orientation="vertical"
     android:background="@drawable/rv_item_bg"
+    android:padding="@dimen/dp_12"
     android:layout_margin="5dp">
 
     <TextView
-        android:id="@+id/large_text_view"
+        android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="Business Card"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"/>
+        android:textSize="@dimen/sp_30"
+        android:text="Business Card"/>
 
     <TextView
-        android:id="@+id/small_text_view"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Additional information"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"/>
+        android:textSize="@dimen/sp_20"
+        android:text="e-mail"/>
+
+    <TextView
+        android:id="@+id/phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="phone number"
+        android:textSize="@dimen/sp_20"/>
 
 
 </LinearLayout>

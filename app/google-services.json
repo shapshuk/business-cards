@@ -15,11 +15,27 @@
       },
       "oauth_client": [
         {
+          "client_id": "887818471062-2on81e5tbhfjna7hbvvtbfaj649ssv3o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.businesscards",
+            "certificate_hash": "810f8a0113f02eb7f7f3ad7c661558c64146d2dd"
+          }
+        },
+        {
           "client_id": "887818471062-iv2fp0ii3rs8usp9dr9o3s6u8fg0gf9e.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.businesscards",
             "certificate_hash": "c4de02a750a4687fba4af592bd369da228ad08c6"
+          }
+        },
+        {
+          "client_id": "887818471062-npi1us4pb6vuo60ibabnsujd8auli6qd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.businesscards",
+            "certificate_hash": "536ab136cd2fa016ca57ba230f8a62f51f4b1a02"
           }
         },
         {

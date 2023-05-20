@@ -1,14 +1,34 @@
 package com.example.businesscards.ui.common
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.example.businesscards.R
+import com.example.businesscards.core.extensions.getAppComponent
 import com.example.businesscards.databinding.FragmentErrorBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.example.businesscards.util.getSerializable
 
 class ErrorBottomSheetFragment : BottomSheetDialogFragment() {
 
     private val binding: FragmentErrorBottomSheetBinding by lazy {
         FragmentErrorBottomSheetBinding.inflate(layoutInflater)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val error = arguments?.getSerializable<Error>(ERROR_KEY)
+        error?.let { chooseCurrentState(it) }
     }
 
     private fun chooseCurrentState(state: Error) {

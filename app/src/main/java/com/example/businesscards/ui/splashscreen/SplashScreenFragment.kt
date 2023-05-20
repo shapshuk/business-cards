@@ -51,6 +51,7 @@ class SplashScreenFragment : BaseFragment() {
         if (listOfDataFromFirebase.isEmpty()) {
 //            navigate(R.id.action_splashScreenFragment_to_listInterestsFragment)
         } else {
+            Log.d("Cards", listOfDataFromFirebase.toString())
             navigate(R.id.action_splashScreenFragment_to_cardsMainFragment)
         }
     }
