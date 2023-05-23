@@ -19,30 +19,31 @@ class CardsMainViewModel @Inject constructor(
 
 ) : ViewModel() {
 
-    val cardsItemFromServer = MutableLiveData<MutableList<CardUiModel>>()
-    val isDataFailed = MutableLiveData<Unit>()
-
-    init {
-        viewModelScope.launch {
-            readFirebaseData()
-        }
-    }
-
-    private suspend fun readFirebaseData() {
-        withContext(viewModelScope.coroutineContext) {
-            getUid(firebaseAuth).let {
-                Firebase.database.getReference("Cards").get()
-                    .addOnCompleteListener { task ->
-                        Log.d("RealtimeDatabase", task.toString())
-                        if (task.isSuccessful) {
-                            cardsItemFromServer.postValue(task.result.children.mapNotNull { data ->
-                                data.getValue<CardUiModel>()
-                            } as MutableList<CardUiModel>)
-                        } else {
-                            isDataFailed.postValue(Unit)
-                        }
-                    }
-            }
-        }
-    }
+//    val cardsItemFromServer = MutableLiveData<MutableList<CardUiModel>>()
+//    val personalCardsFromServer = MutableLiveData<MutableList<CardUiModel>>()
+//    val isDataFailed = MutableLiveData<Unit>()
+//
+//    init {
+//        viewModelScope.launch {
+//            readFirebaseData()
+//        }
+//    }
+//
+//    private suspend fun readFirebaseData() {
+//        withContext(viewModelScope.coroutineContext) {
+//            getUid(firebaseAuth).let {
+//                Firebase.database.getReference("Cards").get()
+//                    .addOnCompleteListener { task ->
+//                        Log.d("RealtimeDatabase", task.toString())
+//                        if (task.isSuccessful) {
+//                            cardsItemFromServer.postValue(task.result.children.mapNotNull { data ->
+//                                data.getValue<CardUiModel>()
+//                            } as MutableList<CardUiModel>)
+//                        } else {
+//                            isDataFailed.postValue(Unit)
+//                        }
+//                    }
+//            }
+//        }
+//    }
 }

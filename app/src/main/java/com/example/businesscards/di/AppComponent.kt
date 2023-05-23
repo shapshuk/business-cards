@@ -4,7 +4,10 @@ import android.content.Context
 import com.example.businesscards.di.factory.ViewModelFactory
 import com.example.businesscards.ui.cardsmainfragment.CardsMainFragment
 import com.example.businesscards.ui.cardsmainfragment.CardsMainViewModel
+import com.example.businesscards.ui.cardsmainfragment.contacts.ContactsFragment
+import com.example.businesscards.ui.cardsmainfragment.mycards.MyCardsFragment
 import com.example.businesscards.ui.main.MainActivity
+import com.example.businesscards.ui.sharecard.ShareCardFragment
 import com.example.businesscards.ui.signin.SignInFragment
 import com.example.businesscards.ui.splashscreen.SplashScreenFragment
 import dagger.BindsInstance
@@ -19,6 +22,9 @@ interface AppComponent {
     fun inject(fragment: SignInFragment)
     fun inject(fragment: SplashScreenFragment)
     fun inject(fragment: CardsMainFragment)
+    fun inject(fragment: MyCardsFragment)
+    fun inject(fragment: ContactsFragment)
+    fun inject(fragment: ShareCardFragment)
 
     fun viewModelsFactory(): ViewModelFactory
 

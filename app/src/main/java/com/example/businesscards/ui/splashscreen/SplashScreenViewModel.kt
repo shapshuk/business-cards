@@ -57,14 +57,16 @@ class SplashScreenViewModel @Inject constructor(
     private suspend fun readFirebaseData() {
         withContext(viewModelScope.coroutineContext) {
             getUid(firebaseAuth).let {
-                Firebase.database.getReference("Cards").get()
+                Log.d("User Id", it)
+                Firebase.database.getReference("Users").child(it).child("OtherCards").get()
                     .addOnCompleteListener { task ->
-                        Log.d("RealtimeDatabase", task.toString())
                         if (task.isSuccessful) {
                             listOfDataFromFirebase.postValue(task.result.children.mapNotNull { data ->
+                                Log.d("Data from firebase", data.toString())
                                 data.getValue<CardUiModel>()
                             } as MutableList<CardUiModel>)
                         } else {
+                            Log.d("SplashScreenVM", "Task is not successful")
                             isDataFailed.postValue(Unit)
                         }
                     }

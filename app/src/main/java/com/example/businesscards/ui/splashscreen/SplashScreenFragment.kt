@@ -48,12 +48,13 @@ class SplashScreenFragment : BaseFragment() {
 
     private fun handleListOfDataFromFirebase(listOfDataFromFirebase: MutableList<CardUiModel>) {
         Log.d("SplashScreen", "handling list of data from firebase")
-        if (listOfDataFromFirebase.isEmpty()) {
-//            navigate(R.id.action_splashScreenFragment_to_listInterestsFragment)
-        } else {
-            Log.d("Cards", listOfDataFromFirebase.toString())
-            navigate(R.id.action_splashScreenFragment_to_cardsMainFragment)
-        }
+        navigate(R.id.action_splashScreenFragment_to_cardsMainFragment)
+//        if (listOfDataFromFirebase.isEmpty()) {
+////            navigate(R.id.action_splashScreenFragment_to_listInterestsFragment)
+//        } else {
+//            Log.d("Cards", listOfDataFromFirebase.toString())
+//            navigate(R.id.action_splashScreenFragment_to_cardsMainFragment)
+//        }
     }
 
     private fun handleNavigationSignIn() {

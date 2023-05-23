@@ -1,7 +1,11 @@
 package com.example.businesscards.ui.main
 
 import android.Manifest
+import android.content.Intent
+import android.nfc.NdefMessage
+import android.nfc.NfcAdapter
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -79,5 +83,17 @@ class MainActivity : BaseActivity() {
 //            }
 //        }
         return true
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED == intent.action) {
+            val rawMessages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
+            if (rawMessages != null && rawMessages.isNotEmpty()) {
+                val ndefMessage = rawMessages[0] as NdefMessage
+                val nfcString = String(ndefMessage.records[0].payload)
+                Toast.makeText(this, nfcString, Toast.LENGTH_LONG).show()
+            }
+        }
     }
 }

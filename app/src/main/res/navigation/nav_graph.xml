@@ -26,5 +26,17 @@
     <fragment
         android:id="@+id/cardsMainFragment"
         android:name="com.example.businesscards.ui.cardsmainfragment.CardsMainFragment"
-        android:label="CardsMainFragment" />
+        android:label="CardsMainFragment" >
+        <action
+            android:id="@+id/action_cardsMainFragment_to_shareCardFragment"
+            app:destination="@id/shareCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shareCardFragment"
+        android:name="com.example.businesscards.ui.sharecard.ShareCardFragment"
+        android:label="ShareCardFragment" >
+        <argument
+            android:name="cardToShare"
+            app:argType="com.example.businesscards.data.CardUiModel"/>
+    </fragment>
 </navigation>

@@ -7,6 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class CardUiModel (
     val userName: String? = "",
     val email : String? = "",
-    val imageUri : String? = "",
+    val imageUrl : String? = "",
     val phoneNumber : String? = "",
 ): Parcelable

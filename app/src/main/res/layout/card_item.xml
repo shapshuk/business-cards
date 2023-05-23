@@ -28,5 +28,12 @@
         android:text="phone number"
         android:textSize="@dimen/sp_20"/>
 
+    <ImageView
+        android:id="@+id/nfc_button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="end"
+        android:src="@drawable/nfc_image" />
+
 
 </LinearLayout>
