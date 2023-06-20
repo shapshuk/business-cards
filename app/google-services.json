@@ -39,6 +39,14 @@
           }
         },
         {
+          "client_id": "887818471062-sv2l04qojk3f3sn7ld3sb3n2bscf0b08.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.businesscards",
+            "certificate_hash": "14814f2e1c8e26a9a288096d753ef3119fac82ac"
+          }
+        },
+        {
           "client_id": "887818471062-roaklm54c611hlv3j3ppn3ovcifqria2.apps.googleusercontent.com",
           "client_type": 3
         }

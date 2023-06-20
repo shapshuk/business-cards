@@ -53,9 +53,9 @@ class MyCardsFragment : BaseFragment() {
             adapter = OverlappingAdapter(
                 cardList.toMutableList(),
                 { position ->
-                selectedPosition = position
-                recyclerView.invalidateItemDecorations()
-                adapter!!.notifyItemChanged(position)
+                    selectedPosition = position
+                    recyclerView.invalidateItemDecorations()
+                    adapter!!.notifyItemChanged(position)
                 },
                 { cardItem ->
                     navController.navigate(

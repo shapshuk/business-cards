@@ -96,6 +96,7 @@ class SignInFragment @Inject constructor(
         if (listOfDataFromFirebase.isEmpty()) {
             Log.d("SignInFragment", "listOfData is empty")
 //            navigate(R.id.action_signInFragment_to_listInterestsFragment)
+            navigate(R.id.action_signInFragment_to_cardsMainFragment)
         } else {
             navigate(R.id.action_signInFragment_to_cardsMainFragment)
         }

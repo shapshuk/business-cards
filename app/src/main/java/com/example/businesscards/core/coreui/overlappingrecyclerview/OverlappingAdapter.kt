@@ -21,7 +21,6 @@ class OverlappingAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OverlappingViewHolder {
-//        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_item, parent, false)
         val view = CardItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -31,10 +30,6 @@ class OverlappingAdapter(
     }
 
     override fun onBindViewHolder(holder: OverlappingViewHolder, position: Int) {
-//        holder.userName.text = items[position].userName
-//        holder.email.text = items[position].email
-//        holder.phoneNumber.text = items[position].phoneNumber
-
         holder.bindView(items[position])
         holder.itemView.setOnClickListener {
             Log.d("Card", "Card was №${position+1} clicked")

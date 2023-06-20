@@ -9,4 +9,5 @@ data class CardUiModel (
     val email : String? = "",
     val imageUrl : String? = "",
     val phoneNumber : String? = "",
+    val jobPosition : String? = ""
 ): Parcelable

@@ -6,6 +6,7 @@ import com.example.businesscards.ui.cardsmainfragment.CardsMainFragment
 import com.example.businesscards.ui.cardsmainfragment.CardsMainViewModel
 import com.example.businesscards.ui.cardsmainfragment.contacts.ContactsFragment
 import com.example.businesscards.ui.cardsmainfragment.mycards.MyCardsFragment
+import com.example.businesscards.ui.createcard.CreateCardFragment
 import com.example.businesscards.ui.main.MainActivity
 import com.example.businesscards.ui.sharecard.ShareCardFragment
 import com.example.businesscards.ui.signin.SignInFragment
@@ -25,6 +26,7 @@ interface AppComponent {
     fun inject(fragment: MyCardsFragment)
     fun inject(fragment: ContactsFragment)
     fun inject(fragment: ShareCardFragment)
+    fun inject(fragment: CreateCardFragment)
 
     fun viewModelsFactory(): ViewModelFactory
 

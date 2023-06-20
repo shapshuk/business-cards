@@ -22,4 +22,5 @@
     <color name="transparent">#00000000</color>
     <color name="red">#F4363C</color>
     <color name="shimmerBackGround">#dddddd</color>
+    <color name="grey">#737373</color>
 </resources>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+        <TextView
+            android:id="@+id/text_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create card"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/add_card_image"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:src="@drawable/ic_account_circle_orange"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_8"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/style_roboto_sp_12_grey"
+        android:text="Add card photo"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/style_roboto_sp_12_grey"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="Full name"
+        android:layout_marginStart="@dimen/dp_16"/>
+
+    <EditText
+        android:id="@+id/name_edit_text"
+        android:autofillHints="name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/bg_rounded_orange_edittext"
+        android:layout_marginHorizontal="@dimen/dp_16"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/style_roboto_sp_12_grey"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="Email address"
+        android:layout_marginStart="@dimen/dp_16"/>
+
+    <EditText
+        android:id="@+id/email_edit_text"
+        android:autofillHints="emailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/bg_rounded_orange_edittext"
+        android:layout_marginHorizontal="@dimen/dp_16"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/style_roboto_sp_12_grey"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="Phone number"
+        android:layout_marginStart="@dimen/dp_16"/>
+
+    <EditText
+        android:id="@+id/phone_number_edit_text"
+        android:autofillHints="phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/bg_rounded_orange_edittext"
+        android:layout_marginHorizontal="@dimen/dp_16"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/style_roboto_sp_12_grey"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="Position"
+        android:layout_marginStart="@dimen/dp_16"/>
+
+    <EditText
+        android:id="@+id/position_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/bg_rounded_orange_edittext"
+        android:layout_marginHorizontal="@dimen/dp_16"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/style_roboto_sp_12_grey"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="Company"
+        android:layout_marginStart="@dimen/dp_16"/>
+
+    <EditText
+        android:id="@+id/company_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/bg_rounded_orange_edittext"
+        android:layout_marginHorizontal="@dimen/dp_16"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/save_card_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_rounded_orange_button"
+        android:text="Save card"
+        android:textAppearance="@style/style_roboto_medium_sp_20"
+        android:layout_margin="@dimen/dp_16"/>
+
+</LinearLayout>

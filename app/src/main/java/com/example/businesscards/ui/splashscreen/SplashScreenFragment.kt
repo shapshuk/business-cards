@@ -46,7 +46,7 @@ class SplashScreenFragment : BaseFragment() {
         }
     }
 
-    private fun handleListOfDataFromFirebase(listOfDataFromFirebase: MutableList<CardUiModel>) {
+    private fun handleNavigationMainFragment() {
         Log.d("SplashScreen", "handling list of data from firebase")
         navigate(R.id.action_splashScreenFragment_to_cardsMainFragment)
 //        if (listOfDataFromFirebase.isEmpty()) {
@@ -71,10 +71,13 @@ class SplashScreenFragment : BaseFragment() {
 
     override fun initObservers() {
         connectivityLiveData.observe(viewLifecycleOwner, ::handleInternetConnection)
-        viewModel.isNavigateToViewPagerNeeded.observe(viewLifecycleOwner) {
+        viewModel.isNavigateToSignInNeeded.observe(viewLifecycleOwner) {
             handleNavigationSignIn()
         }
-        viewModel.listOfDataFromFirebase.observe(viewLifecycleOwner, ::handleListOfDataFromFirebase)
+        viewModel.isNavigateToMainFragmentNeeded.observe(viewLifecycleOwner) {
+            handleNavigationMainFragment()
+        }
+//        viewModel.listOfDataFromFirebase.observe(viewLifecycleOwner, ::handleListOfDataFromFirebase)
         viewModel.isDataFailed.observe(viewLifecycleOwner) {
             handleDataIsFailed()
         }

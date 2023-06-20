@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_cardsMainFragment_to_shareCardFragment"
             app:destination="@id/shareCardFragment" />
+        <action
+            android:id="@+id/action_cardsMainFragment_to_createCardFragment"
+            app:destination="@id/createCardFragment" />
     </fragment>
     <fragment
         android:id="@+id/shareCardFragment"
@@ -39,4 +42,8 @@
             android:name="cardToShare"
             app:argType="com.example.businesscards.data.CardUiModel"/>
     </fragment>
+    <fragment
+        android:id="@+id/createCardFragment"
+        android:name="com.example.businesscards.ui.createcard.CreateCardFragment"
+        android:label="CreateCardFragment" />
 </navigation>

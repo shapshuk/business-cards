@@ -5,20 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.businesscards.core.CARDS
 import com.example.businesscards.data.CardUiModel
-import com.example.businesscards.util.getUid
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class SplashScreenViewModel @Inject constructor(
@@ -31,17 +22,19 @@ class SplashScreenViewModel @Inject constructor(
 
     val listOfDataFromFirebase = MutableLiveData<MutableList<CardUiModel>>()
 
-    val isNavigateToViewPagerNeeded = MutableLiveData<Unit>()
+    val isNavigateToSignInNeeded = MutableLiveData<Unit>()
+    val isNavigateToMainFragmentNeeded = MutableLiveData<Unit>()
 
     val isDataFailed = MutableLiveData<Unit>()
 
     private val firebaseDataObserver = Observer<Boolean> { isUserRegistered ->
         if (isUserRegistered) {
             Log.d("SplashScreenViewModel", "User is registered")
-            viewModelScope.launch { readFirebaseData() }
+//            viewModelScope.launch { readFirebaseData() }
+            isNavigateToMainFragmentNeeded.value = Unit
         } else {
             Log.d("SplashScreenViewModel", "User is not registrered")
-            isNavigateToViewPagerNeeded.value = Unit
+            isNavigateToSignInNeeded.value = Unit
         }
     }
 
@@ -54,25 +47,25 @@ class SplashScreenViewModel @Inject constructor(
         isUserRegistered.postValue(auth.currentUser != null)
     }
 
-    private suspend fun readFirebaseData() {
-        withContext(viewModelScope.coroutineContext) {
-            getUid(firebaseAuth).let {
-                Log.d("User Id", it)
-                Firebase.database.getReference("Users").child(it).child("OtherCards").get()
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            listOfDataFromFirebase.postValue(task.result.children.mapNotNull { data ->
-                                Log.d("Data from firebase", data.toString())
-                                data.getValue<CardUiModel>()
-                            } as MutableList<CardUiModel>)
-                        } else {
-                            Log.d("SplashScreenVM", "Task is not successful")
-                            isDataFailed.postValue(Unit)
-                        }
-                    }
-            }
-        }
-    }
+//    private suspend fun readFirebaseData() {
+//        withContext(viewModelScope.coroutineContext) {
+//            getUid(firebaseAuth).let {
+//                Log.d("User Id", it)
+//                Firebase.database.getReference("Users").child(it).child("OtherCards").get()
+//                    .addOnCompleteListener { task ->
+//                        if (task.isSuccessful) {
+//                            listOfDataFromFirebase.postValue(task.result.children.mapNotNull { data ->
+//                                Log.d("Data from firebase", data.toString())
+//                                data.getValue<CardUiModel>()
+//                            } as MutableList<CardUiModel>)
+//                        } else {
+//                            Log.d("SplashScreenVM", "Task is not successful")
+//                            isDataFailed.postValue(Unit)
+//                        }
+//                    }
+//            }
+//        }
+//    }
 
     override fun onCleared() {
         super.onCleared()

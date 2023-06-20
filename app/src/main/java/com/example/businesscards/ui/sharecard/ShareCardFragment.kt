@@ -18,6 +18,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
+import com.example.businesscards.R
 import com.example.businesscards.core.coreui.BaseFragment
 import com.example.businesscards.core.extensions.getAppComponent
 import com.example.businesscards.databinding.FragmentShareCardBinding
@@ -52,6 +54,13 @@ class ShareCardFragment : BaseFragment() {
             userName.text = navArgs.cardToShare.userName
             email.text = navArgs.cardToShare.email
             phoneNumber.text = navArgs.cardToShare.phoneNumber
+            jobPosition.text = navArgs.cardToShare.jobPosition
+
+            Glide.with(requireContext())
+                .load(navArgs.cardToShare.imageUrl)
+                .placeholder(R.drawable.ic_account_circle_orange)
+                .circleCrop()
+                .into(userImage)
         }
 
         if (nfcAdapter == null) {

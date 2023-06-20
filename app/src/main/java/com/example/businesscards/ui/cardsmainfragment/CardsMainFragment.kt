@@ -2,29 +2,26 @@ package com.example.businesscards.ui.cardsmainfragment
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.example.businesscards.R
 import com.example.businesscards.core.coreui.BaseFragment
-import com.example.businesscards.core.coreui.overlappingrecyclerview.OverlappingAdapter
-import com.example.businesscards.core.coreui.overlappingrecyclerview.OverlappingItemDecoration
 import com.example.businesscards.core.extensions.getAppComponent
-import com.example.businesscards.data.CardUiModel
 import com.example.businesscards.databinding.FragmentCardsMainBinding
-import com.example.businesscards.databinding.FragmentSplashScreenBinding
 import com.example.businesscards.ui.cardsmainfragment.contacts.ContactsFragment
 import com.example.businesscards.ui.cardsmainfragment.mycards.MyCardsFragment
-import com.example.businesscards.ui.common.Error
-import com.example.businesscards.ui.splashscreen.SplashScreenViewModel
+import com.example.businesscards.ui.main.MainActivity
+import com.google.firebase.auth.FirebaseAuth
+import javax.inject.Inject
+
 
 class CardsMainFragment : BaseFragment() {
 
@@ -47,6 +44,7 @@ class CardsMainFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding.toolbar.inflateMenu(R.menu.menu_main)
         return binding.root
     }
 
@@ -57,10 +55,42 @@ class CardsMainFragment : BaseFragment() {
         viewPager.adapter = pagerAdapter
 
         with(pagerAdapter) {
-            addFragment(ContactsFragment())
             addFragment(MyCardsFragment())
+            addFragment(ContactsFragment())
+        }
+
+
+        binding.addCardButton.setOnClickListener {
+            navController.navigate(R.id.action_cardsMainFragment_to_createCardFragment)
         }
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_log_out -> {
+                    FirebaseAuth.getInstance().signOut()
+                    navController.popBackStack(R.id.signInFragment, true)
+                    navController.navigate(R.id.signInFragment)
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        inflater.inflate(R.menu.menu_main, menu)
+//        super.onCreateOptionsMenu(menu, inflater)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if (item.itemId == R.id.action_log_out) {
+//
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
     override fun initObservers() {
 //        viewModel.cardsItemFromServer.observe(viewLifecycleOwner) { cards ->

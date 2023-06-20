@@ -47,13 +47,13 @@ class ContactsFragment : BaseFragment() {
             addItemDecoration(OverlappingItemDecoration { selectedPosition })
             adapter = OverlappingAdapter(cardList.toMutableList(),
                 { position ->
-                selectedPosition = position
-                recyclerView.invalidateItemDecorations()
-                adapter!!.notifyItemChanged(position)
-            },
-            { _ ->
-                Toast.makeText(requireContext(), "Card was clicked", Toast.LENGTH_SHORT).show()
-            }
+                    selectedPosition = position
+                    recyclerView.invalidateItemDecorations()
+                    adapter!!.notifyItemChanged(position)
+                },
+                { _ ->
+                    Toast.makeText(requireContext(), "Card was clicked", Toast.LENGTH_SHORT).show()
+                }
             )
         }
     }
