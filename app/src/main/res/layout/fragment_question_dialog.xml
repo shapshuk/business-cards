@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/bg_rounded_orange_edittext"
+    android:paddingVertical="@dimen/dp_32"
+    android:paddingHorizontal="@dimen/dp_40">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are you sure you want to delete this card?"
+        android:textAppearance="@style/style_roboto_bold_sp_24"
+        android:textColor="@color/black"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/continue_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:background="@drawable/shape_red_button"
+        android:text="Continue"
+        android:textColor="@color/white"
+        android:textAppearance="@style/style_roboto_medium_sp_20"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cancel_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@drawable/shape_white_button"
+        android:text="Cancel"
+        android:textColor="@color/black"
+        android:textAppearance="@style/style_roboto_medium_sp_20"/>
+
+</LinearLayout>

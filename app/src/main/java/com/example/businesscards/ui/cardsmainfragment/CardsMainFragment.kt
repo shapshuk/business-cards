@@ -40,11 +40,15 @@ class CardsMainFragment : BaseFragment() {
         getAppComponent().inject(this)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding.toolbar.inflateMenu(R.menu.menu_main)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding.toolbar.inflateMenu(R.menu.menu_main)
         return binding.root
     }
 
@@ -58,7 +62,6 @@ class CardsMainFragment : BaseFragment() {
             addFragment(MyCardsFragment())
             addFragment(ContactsFragment())
         }
-
 
         binding.addCardButton.setOnClickListener {
             navController.navigate(R.id.action_cardsMainFragment_to_createCardFragment)
@@ -78,27 +81,6 @@ class CardsMainFragment : BaseFragment() {
                 else -> false
             }
         }
-    }
-
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        inflater.inflate(R.menu.menu_main, menu)
-//        super.onCreateOptionsMenu(menu, inflater)
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        if (item.itemId == R.id.action_log_out) {
-//
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
-
-    override fun initObservers() {
-//        viewModel.cardsItemFromServer.observe(viewLifecycleOwner) { cards ->
-//            (binding.recyclerview.adapter as OverlappingAdapter).setItems(cards)
-//        }
-//        viewModel.isDataFailed.observe(viewLifecycleOwner) {
-//            showErrorBottomSheet(Error.ERROR_WITH_REALTIME_DB)
-//        }
     }
 }
 

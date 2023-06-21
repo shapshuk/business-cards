@@ -15,33 +15,26 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary">
 
-        <ImageButton
-            android:id="@+id/back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_back_button" />
-
         <TextView
             android:id="@+id/text_app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Share card"
+            android:text="Business cards"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_gravity="center" />
 
     </androidx.appcompat.widget.Toolbar>
-    
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Card to share:"
+        android:text="Accepted card:"
         android:textAppearance="@style/style_roboto_medium_sp_20"
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_12"/>
-    
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -102,24 +95,22 @@
                 android:layout_width="@dimen/dp_50"
                 android:layout_height="@dimen/dp_50"
                 android:src="@drawable/personal_photo"/>
-            
+
         </LinearLayout>
     </LinearLayout>
-    
-    <ImageView
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/ic_nfc_black"
-        android:layout_marginTop="40dp"/>
 
-    <TextView
-        android:id="@+id/hint_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Bring your phones close \nto each other"
-        android:textAlignment="center"
-        android:textAppearance="@style/style_roboto_medium_sp_20"/>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/return_to_main_screen"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_rounded_orange_button"
+        android:text="Back to main screen"
+        android:textAppearance="@style/style_roboto_medium_sp_20"
+        android:layout_margin="@dimen/dp_16"/>
 
 </LinearLayout>

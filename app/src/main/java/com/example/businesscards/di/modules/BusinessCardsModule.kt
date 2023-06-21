@@ -5,6 +5,7 @@ import com.example.businesscards.di.utils.CardsReference
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import dagger.Module
@@ -29,7 +30,7 @@ class BusinessCardsModule {
     @Provides
     @Singleton
     fun provideCardsDatabaseReference(): DatabaseReference =
-        Firebase.database.getReference(CARDS_KEY)
+        FirebaseDatabase.getInstance().reference
 
 //    @Provides
 //    @Singleton

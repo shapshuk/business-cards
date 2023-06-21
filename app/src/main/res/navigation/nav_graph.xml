@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_cardsMainFragment_to_createCardFragment"
             app:destination="@id/createCardFragment" />
+        <action
+            android:id="@+id/action_cardsMainFragment_to_editCardFragment"
+            app:destination="@id/editCardFragment" />
     </fragment>
     <fragment
         android:id="@+id/shareCardFragment"
@@ -41,9 +44,42 @@
         <argument
             android:name="cardToShare"
             app:argType="com.example.businesscards.data.CardUiModel"/>
+        <action
+            android:id="@+id/action_shareCardFragment_to_acceptedCardFragment"
+            app:destination="@id/acceptedCardFragment" />
     </fragment>
     <fragment
         android:id="@+id/createCardFragment"
         android:name="com.example.businesscards.ui.createcard.CreateCardFragment"
-        android:label="CreateCardFragment" />
+        android:label="CreateCardFragment" >
+        <action
+            android:id="@+id/action_createCardFragment_to_cardsMainFragment"
+            app:destination="@id/cardsMainFragment"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/acceptedCardFragment"
+        android:name="com.example.businesscards.ui.acceptedcard.AcceptedCardFragment"
+        android:label="AcceptedCardFragment" >
+        <argument
+            android:name="cardToShare"
+            app:argType="com.example.businesscards.data.CardUiModel"/>
+        <action
+            android:id="@+id/action_acceptedCardFragment_to_cardsMainFragment"
+            app:destination="@id/cardsMainFragment"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/editCardFragment"
+        android:name="com.example.businesscards.ui.editcard.EditCardFragment"
+        android:label="EditCardFragment" >
+        <argument
+            android:name="cardToShare"
+            app:argType="com.example.businesscards.data.CardUiModel"/>
+        <action
+            android:id="@+id/action_editCardFragment_to_cardsMainFragment"
+            app:destination="@id/cardsMainFragment" />
+    </fragment>
 </navigation>

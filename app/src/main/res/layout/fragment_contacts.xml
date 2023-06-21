@@ -29,6 +29,26 @@
                 android:layout_marginTop="@dimen/dp_16"
                 android:layout_marginHorizontal="@dimen/dp_10"/>
 
+            <TextView
+                android:id="@+id/no_cards_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textAlignment="center"
+                android:text="You don't have any cards yet. Exchange with someone to get them."
+                android:layout_margin="@dimen/dp_16"
+                android:textAppearance="@style/style_roboto_medium_sp_20"
+                android:textColor="@color/grey"/>
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="250dp"
+                android:layout_weight="1"
+                android:indeterminateTint="@color/orange"
+                android:indeterminate="true"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"

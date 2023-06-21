@@ -1,8 +1,9 @@
-package com.example.businesscards.ui.createcard
+package com.example.businesscards.ui.editcard
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.nfc.NfcAdapter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,19 +13,28 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.businesscards.R
 import com.example.businesscards.core.coreui.BaseFragment
 import com.example.businesscards.core.coreui.visible
 import com.example.businesscards.core.extensions.getAppComponent
-import com.example.businesscards.databinding.FragmentCreateCardBinding
+import com.example.businesscards.databinding.FragmentEditCardBinding
+import com.example.businesscards.ui.createcard.CreateCardFragmentDirections
 import com.example.businesscards.ui.dialog.SuccessDialogFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.util.*
 
-class CreateCardFragment : BaseFragment() {
+class EditCardFragment : BaseFragment() {
+
+    private val binding : FragmentEditCardBinding by lazy {
+        FragmentEditCardBinding.inflate(layoutInflater)
+    }
+    val navArgs: EditCardFragmentArgs by navArgs()
+
+    private val navController: NavController by lazy { findNavController() }
 
     private val storageRef: StorageReference by lazy {
         FirebaseStorage.getInstance().reference
@@ -33,13 +43,7 @@ class CreateCardFragment : BaseFragment() {
         FirebaseAuth.getInstance().currentUser?.uid ?: ""
     }
 
-    private val binding: FragmentCreateCardBinding by lazy {
-        FragmentCreateCardBinding.inflate(layoutInflater)
-    }
-
-    private val navController: NavController by lazy { findNavController() }
-
-    private val viewModel : CreateCardViewModel by viewModels {
+    private val viewModel: EditCardViewModel by viewModels {
         getAppComponent().viewModelsFactory()
     }
 
@@ -57,12 +61,22 @@ class CreateCardFragment : BaseFragment() {
 
     override fun initViews() {
         with(binding) {
-            addCardImage.setOnClickListener {
-                pickImage()
-            }
+            nameEditText.setText(navArgs.cardToShare.userName)
+            emailEditText.setText(navArgs.cardToShare.email)
+            phoneNumberEditText.setText(navArgs.cardToShare.phoneNumber)
+
+            Glide.with(requireContext())
+                .load(navArgs.cardToShare.imageUrl)
+                .placeholder(R.drawable.ic_account_circle_orange)
+                .circleCrop()
+                .into(addCardImage)
+
             saveCardButton.setOnClickListener {
                 visible(progressLayout)
                 saveCard()
+            }
+            addCardImage.setOnClickListener {
+                pickImage()
             }
             backButton.setOnClickListener {
                 requireActivity().onBackPressed()
@@ -70,7 +84,7 @@ class CreateCardFragment : BaseFragment() {
         }
     }
 
-    fun pickImage() {
+    private fun pickImage() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.setType("image/*")
         startActivityForResult(intent, PICK_PHOTO_FOR_AVATAR)
@@ -100,11 +114,12 @@ class CreateCardFragment : BaseFragment() {
         val email = binding.emailEditText.text.toString()
         val phoneNumber = binding.phoneNumberEditText.text.toString()
         val jobPosition = "${binding.positionEditText.text} at ${binding.companyEditText.text}"
+        val currentCardId = navArgs.cardToShare.cardId
 
         if (userName.isNotEmpty() && email.isNotEmpty() && phoneNumber.isNotEmpty()) {
 
             val imageUri = viewModel.imageUri
-
+            val oldImageUrl = navArgs.cardToShare.imageUrl
             if (imageUri != null) {
                 val filename = UUID.randomUUID().toString()
                 val imageRef = storageRef.child("images/$filename")
@@ -114,14 +129,15 @@ class CreateCardFragment : BaseFragment() {
                 uploadTask.addOnSuccessListener { taskSnapshot ->
                     val imageDownloadUrl = taskSnapshot.metadata?.reference?.downloadUrl!!
                     imageDownloadUrl.addOnCompleteListener {
-                        viewModel.createCard(currentUserId, userName, email, phoneNumber, jobPosition, it.result.toString())
+                        viewModel.createCard(currentCardId, currentUserId, userName, email, phoneNumber, jobPosition, it.result.toString())
                     }
                 }.addOnFailureListener { exception ->
                     // Handle upload failure
                 }
+            } else if (!oldImageUrl.isNullOrEmpty()){
+                viewModel.createCard(currentCardId, currentUserId, userName, email, phoneNumber, jobPosition, oldImageUrl)
             } else {
-                viewModel.createCard(currentUserId, userName, email, phoneNumber, jobPosition, "")
-//                clearFields()
+                viewModel.createCard(currentCardId, currentUserId, userName, email, phoneNumber, jobPosition, "")
             }
         } else {
             // Display an error message indicating missing fields
@@ -133,7 +149,7 @@ class CreateCardFragment : BaseFragment() {
             SuccessDialogFragment().show(childFragmentManager)
         }
         viewModel.navigateBackToMainScreenLiveData.observe(viewLifecycleOwner) {
-            navController.navigate(CreateCardFragmentDirections.actionCreateCardFragmentToCardsMainFragment())
+            navController.navigate(EditCardFragmentDirections.actionEditCardFragmentToCardsMainFragment())
         }
     }
 

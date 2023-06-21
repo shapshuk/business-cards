@@ -9,6 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -29,7 +30,7 @@
                 android:id="@+id/text_app_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create card"
+                android:text="Edit card"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -153,6 +154,7 @@
             android:text="Save card"
             android:textAppearance="@style/style_roboto_medium_sp_20"
             android:layout_margin="@dimen/dp_16"/>
+
     </LinearLayout>
 
     <RelativeLayout
@@ -173,4 +175,3 @@
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
